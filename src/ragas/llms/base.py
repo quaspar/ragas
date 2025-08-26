@@ -70,7 +70,8 @@ class BaseRagasLLM(ABC):
 
     def get_temperature(self, n: int) -> float:
         """Return the temperature to use for completion based on n."""
-        return 0.3 if n > 1 else 1e-8
+        return None
+        # return 0.3 if n > 1 else 1e-8
 
     def is_finished(self, response: LLMResult) -> bool:
         logger.warning(
