@@ -68,10 +68,11 @@ class BaseRagasLLM(ABC):
     def set_run_config(self, run_config: RunConfig):
         self.run_config = run_config
 
-    def get_temperature(self, n: int) -> float:
+    def get_temperature(self, n: int | None) -> float | None:
         """Return the temperature to use for completion based on n."""
-        return None
-        # return 0.3 if n > 1 else 1e-8
+        if n is None:
+            return None
+        return 0.3 if n > 1 else 1e-8
 
     def is_finished(self, response: LLMResult) -> bool:
         logger.warning(
